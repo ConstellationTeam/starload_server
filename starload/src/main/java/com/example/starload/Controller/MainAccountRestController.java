@@ -1,20 +1,27 @@
 package com.example.starload.Controller;
 
+import com.example.starload.DTO.UserImpoForm;
+import com.example.starload.Entity.ReqUserData;
+import com.example.starload.Repository.UserImpoRepository;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/account")
 public class MainAccountRestController {
+
+    private final UserImpoRepository UserImpoRepository;
+    public MainAccountRestController(UserImpoRepository UserImpoRepository) {
+        this.UserImpoRepository = UserImpoRepository;
+    }
+
     @PostMapping("/signup")
-    public String ReqSignup(@RequestBody HashMap<String, Object> UserData) {
-        String UserName = UserData.get("UserName").toString();
-        String UserEmail = UserData.get("UserEmail").toString();
-        String UserPhoneNumber = UserData.get("UserPhoneNumber").toString();
-        String UserID = UserData.get("UserID").toString();
-        String UserPW = UserData.get("UserPW").toString();
+    public String ReqSignup(@RequestBody UserImpoForm UserData) {
+        String UserName = UserData.Get("UserName");
+        String UserEmail = UserData.Get("UserEmail");
+        String UserPhoneNumber = UserData.Get("UserPhoneNumber");
+        String UserID = UserData.Get("UserID");
+        String UserPW = UserData.Get("UserPW");
 
         if(UserName.length() <= 2) return "short_Name";
         if(UserName.length() >= 20) return "long_Name";
@@ -25,6 +32,12 @@ public class MainAccountRestController {
         //if(UserName) return "SameID";
         if(UserPW.length() <= 4) return "short_PW";
         if(UserPW.length() >= 20) return "long_PW";
+
+        System.out.println("Reqest login : " + UserName);
+
+        ReqUserData reqsignup = UserData.toEntity();
+        ReqUserData saved = UserImpoRepository.save(reqsignup);
+
         return "success";
     }
 
