@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 public class MainModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long UserCode;
     private String UserID;
     private String UserPW;

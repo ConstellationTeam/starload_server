@@ -1,17 +1,15 @@
 package com.example.starload.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="userdata")
 public class ReqUserData {
     public ReqUserData() {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long UserCode;
     @Column
     private String UserID;
@@ -37,7 +35,8 @@ public class ReqUserData {
     public String toString() {
         return "ReqUserData{" +
                 "UserCode=" + UserCode +
-                ",UserPW=" + UserID +
+                ",UserID=" + UserID +
+                ",UserPW=" + UserPW +
                 ",UserName=" + UserName +
                 ",UserEmail=" + UserEmail +
                 ",UserPhoneNumber=" + UserPhoneNumber +

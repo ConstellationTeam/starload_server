@@ -37,7 +37,8 @@ public class UserImpoForm {
 
     @Override
     public String toString() {
-        return "UserImpo {UserID=" + UserID +
+        return "UserImpo {" +
+                "UserID=" + UserID +
                 ", UserPW=" + UserPW +
                 ", UserName=" + UserName +
                 ", UserEmail=" + UserEmail +
