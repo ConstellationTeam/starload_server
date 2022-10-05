@@ -3,9 +3,8 @@ package com.example.starload.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="userdata")
-public class ReqUserData {
-    public ReqUserData() {
+public class UserData {
+    public UserData() {
     }
 
     @Id
@@ -22,7 +21,7 @@ public class ReqUserData {
     @Column
     private String UserPhoneNumber;
 
-    public ReqUserData(Long UserCode, String UserID, String UserPW, String UserName, String UserEmail, String UserPhoneNumber) {
+    public UserData(Long UserCode, String UserID, String UserPW, String UserName, String UserEmail, String UserPhoneNumber) {
         this.UserCode = UserCode;
         this.UserID = UserID;
         this.UserPW = UserPW;

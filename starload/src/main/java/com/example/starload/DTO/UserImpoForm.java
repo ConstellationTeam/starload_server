@@ -1,6 +1,6 @@
 package com.example.starload.DTO;
 
-import com.example.starload.Entity.ReqUserData;
+import com.example.starload.Entity.UserData;
 
 public class UserImpoForm {
     private String UserID;
@@ -9,7 +9,6 @@ public class UserImpoForm {
     private String UserName;
     private String UserEmail;
     private String UserPhoneNumber;
-
     public UserImpoForm(String UserID, String UserPW, String UserName, String UserEmail, String UserPhoneNumber) {
         this.UserID = UserID;
         this.UserPW = UserPW;
@@ -46,7 +45,7 @@ public class UserImpoForm {
                 "}";
     }
 
-    public ReqUserData toEntity() {
-        return new ReqUserData(null, UserID, UserPW, UserName, UserEmail, UserPhoneNumber);
+    public UserData toEntity() {
+        return new UserData(null, UserID, UserPW, UserName, UserEmail, UserPhoneNumber);
     }
 }

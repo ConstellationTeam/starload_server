@@ -1,10 +1,12 @@
 package com.example.starload.Controller;
 
 import com.example.starload.DTO.UserImpoForm;
-import com.example.starload.Entity.ReqUserData;
+import com.example.starload.Entity.UserData;
 import com.example.starload.Repository.UserImpoRepository;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/account")
@@ -25,7 +27,7 @@ public class MainAccountRestController {
 
         if(UserName.length() <= 2) return "short_Name";
         if(UserName.length() >= 20) return "long_Name";
-        if(UserEmail.indexOf("@") == -1) return "NoEmail";
+        if(!UserEmail.contains("@")) return "NoEmail";
         if(UserPhoneNumber.length() != 11) return "NoPhoneNumber";
         if(UserID.length() <= 4) return "short_ID";
         if(UserID.length() >= 20) return "long_ID";
@@ -34,9 +36,14 @@ public class MainAccountRestController {
         if(UserPW.length() >= 20) return "long_PW";
 
         System.out.println("Reqest login : " + UserName);
+        com.example.starload.Entity.UserData reqsignup = UserData.toEntity();
+        com.example.starload.Entity.UserData saved = UserImpoRepository.save(reqsignup);
 
-        ReqUserData reqsignup = UserData.toEntity();
-        ReqUserData saved = UserImpoRepository.save(reqsignup);
+        return "success";
+    }
+    @PostMapping("/login")
+    public String Reqlogin(@RequestBody String data) {
+        //UserData find = UserImpoRepository.findByUserID("cksgur0612");
 
         return "success";
     }
