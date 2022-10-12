@@ -3,8 +3,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.fastcampus.eatgo.domain.BoardRepository">
-    <resultMap type="kr.hs.dgsw.tlss.domain.User" id="result">
+<mapper namespace="kr.co.fastcampus.eatgo.domain.User">
+    <resultMap type="com.example.starload.domain.User" id="result">
         <result property="userCode" column="user_code" />
         <result property="userEmail" column="user_email" />
         <result property="userid" column="userid" />

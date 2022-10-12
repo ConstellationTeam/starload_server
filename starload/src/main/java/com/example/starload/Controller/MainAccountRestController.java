@@ -3,8 +3,6 @@ package com.example.starload.Controller;
 import batang.common.Controller.RestControllerStrategy;
 import com.example.starload.Domain.User;
 import com.example.starload.Service.UserService;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,8 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/user")
 public class MainAccountRestController extends CommonRestControllerPrototype {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public MainAccountRestController(UserService userService) {
+        this.userService = userService;
+    }
+
     @PostMapping("/user-add")
     public ResponseEntity<?> addUser(HttpServletRequest request, User user) {
         return controllerContext.execute(new RestControllerStrategy() {
