@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-@Service(value = "UserService")
+@Service(value = "userService")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;

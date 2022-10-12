@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.fastcampus.eatgo.domain.User">
+<mapper namespace="com.example.starload.Mapper.UserMapper">
     <resultMap type="com.example.starload.domain.User" id="result">
         <result property="userCode" column="user_code" />
         <result property="userEmail" column="user_email" />
         <result property="userid" column="userid" />
         <result property="userEmail" column="user_name" />
         <result property="userpw" column="userpw" />
-        <result property="userPhoneNumber" column="user_pone_number" />
+        <result property="userPhoneNumber" column="user_phone_number" />
     </resultMap>
 
     <sql id="sql_select">
@@ -36,7 +34,7 @@
     </select>
 
     <insert id="register" parameterType="com.example.starload.domain.User"
-            useGeneratedKeys="true" keyProperty="userIdx">
+            useGeneratedKeys="true" keyProperty="userCode">
 
         INSERT INTO user
         (
@@ -47,13 +45,13 @@
         , user_pone_number
         )
         VALUES
-            (
-              #{user_email}
-            , #{userid}
-            , #{user_name}
-            , #{userpw}
-            , #{user_pone_number}
-            );
+        (
+          #{userEmail}
+        , #{userid}
+        , #{userName}
+        , #{userpw}
+        , #{userPhoneNumber}
+        );
 
     </insert>
 

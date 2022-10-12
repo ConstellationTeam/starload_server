@@ -9,15 +9,7 @@ import java.util.Map;
 
 @Mapper
 public interface UserMapper {
-    public User select(@Param("userCode") int userCode);
-    List<Map<String, Object>> getBoards();
-
-    /**
-     * 주어진 userCode을 가진 사용자 정보를 되돌린다.
-     *
-     * @param userCode 사용자 userCode
-     * @return 사용자 정보
-     */
+    //public User select(@Param("userCode") int userCode);
     public User get(@Param("userCode") int userCode);
     /**
      * 주어진 이메일을 가진 사용자 정보를 되돌린다.
