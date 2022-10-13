@@ -3,6 +3,7 @@ package com.example.starload.Service.impl;
 import com.example.starload.Domain.User;
 import com.example.starload.Mapper.UserMapper;
 import com.example.starload.Service.UserService;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +21,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(String userEmail) {
+    public User get(String userIdentity) {
+        return userMapper.getById(userIdentity);
+    }
+
+    @Override
+    public User getid(String userEmail) {
         return userMapper.getByEmail(userEmail);
     }
 
     @Override
     public User register(User user) {
         userMapper.register(user);
-        return get(user.getUserCode());
+        return get(user.getUserEmail());
     }
 }

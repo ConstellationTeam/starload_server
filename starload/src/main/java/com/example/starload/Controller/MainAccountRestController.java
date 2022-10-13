@@ -3,14 +3,13 @@ package com.example.starload.Controller;
 import batang.common.Controller.RestControllerStrategy;
 import com.example.starload.Domain.User;
 import com.example.starload.Service.UserService;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import batang.common.Controller.CommonRestControllerPrototype;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/user")
@@ -20,20 +19,25 @@ public class MainAccountRestController extends CommonRestControllerPrototype {
 
     @PostMapping("/user-add")
     @ModelAttribute()
-    public ResponseEntity<?> addUser(HttpServletRequest request, User user) {
+    public ResponseEntity<?> addUser(@RequestBody User user) {
         return controllerContext.execute(new RestControllerStrategy() {
             @Override
             public Object execute() {
-                LoggerFactory.getLogger(getClass()).info("woogong : ");
-
+                //LoggerFactory.getLogger(getClass()).info("이이이 : 성?공");
+                System.out.println(user.getUserName());
                 return userService.register(user);
             }
         });
     }
-    @PostMapping("/login")
-    public String Reqlogin(@RequestBody String data) {
-        //UserData find = UserImpoRepository.findByUserID("cksgur0612");
+    @PostMapping("/user-get")
+    public ResponseEntity<?> getUser(@RequestParam(value = "id") String data) {
+        System.out.println(data + ";");
 
-        return "success";
+        return controllerContext.execute(new RestControllerStrategy() {
+            @Override
+            public Object execute() {
+                return userService.get(data);
+            }
+        });
     }
 }

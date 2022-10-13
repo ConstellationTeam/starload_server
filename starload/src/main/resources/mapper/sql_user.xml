@@ -1,0 +1,65 @@
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.starload.Mapper.UserMapper">
+
+    <resultMap type="com.example.starload.Domain.User" id="result">
+        <result property="userCode" column="user_code" />
+        <result property="userEmail" column="user_email" />
+        <result property="userIdentity" column="user_identity" />
+        <result property="userName" column="user_name" />
+        <result property="userPassword" column="user_password" />
+        <result property="userPhoneNumber" column="user_phone_number" />
+    </resultMap>
+
+    <sql id="sql_select">
+        SELECT
+           a.user_code
+         , a.user_email
+         , a.user_name
+         , a.user_identity
+         , a.user_password
+         , a.user_phone_number
+    </sql>
+
+    <select id="get" resultMap="result">
+        <include refid="sql_select"></include>
+        FROM user AS a
+        WHERE a.user_code = #{userCode}
+    </select>
+
+    <select id="getById" resultMap="result">
+        <include refid="sql_select"></include>
+        FROM user AS a
+        WHERE a.user_identity = #{userIdentity}
+    </select>
+
+    <select id="getByEmail" resultMap="result">
+        <include refid="sql_select"></include>
+        FROM user AS a
+        WHERE a.user_email = #{userEmail}
+    </select>
+
+    <insert id="register" parameterType="com.example.starload.Domain.User"
+            keyProperty="userCode">
+
+        INSERT INTO user
+        (
+          user_email
+        , user_name
+        , user_identity
+        , user_password
+        , user_phone_number
+        )
+        VALUES
+        (
+          #{userEmail}
+        , #{userName}
+        , #{userIdentity}
+        , #{userPassword}
+        , #{userPhoneNumber}
+        )
+    </insert>
+
+</mapper>

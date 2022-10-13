@@ -10,11 +10,26 @@ import java.util.Map;
 @Mapper
 public interface UserMapper {
     //public User select(@Param("userCode") int userCode);
-    public User get(@Param("userCode") int userCode);
+
     /**
+     * 주어진 유저 코드를 가진 사용자 정보를 되돌린다.
+     *
+     * @param userCode user_code
+     * @return 사용자 정보
+     */
+    public User get(@Param("userCode") int userCode);
+
+    /**
+     * 주어진 유저 코드를 가진 사용자 정보를 되돌린다.
+     *
+     * @param userIdentity user_identity
+     * @return 사용자 정보
+     */
+    public User getById(@Param("userIdentity") String userIdentity);
+     /**
      * 주어진 이메일을 가진 사용자 정보를 되돌린다.
      *
-     * @param userEmail email
+     * @param userEmail user_email
      * @return 사용자 정보
      */
     public User getByEmail(@Param("userEmail") String userEmail);
