@@ -17,7 +17,7 @@ public class MainAccountRestController extends CommonRestControllerPrototype {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/user-add")
+    @PostMapping("/signup.do")
     @ModelAttribute()
     public ResponseEntity<?> addUser(@RequestBody User user) {
         return controllerContext.execute(new RestControllerStrategy() {
@@ -29,7 +29,7 @@ public class MainAccountRestController extends CommonRestControllerPrototype {
             }
         });
     }
-    @PostMapping("/user-get")
+    @PostMapping("/login.do")
     public ResponseEntity<?> getUser(@RequestParam(value = "id") String data) {
         System.out.println(data + ";");
 

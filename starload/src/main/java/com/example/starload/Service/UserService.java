@@ -1,11 +1,15 @@
 package com.example.starload.Service;
 
 import com.example.starload.Domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 public interface UserService {
+
     /**
      * 주어진 userCode를 가진 사용자 정보를 되돌린다.
      *
