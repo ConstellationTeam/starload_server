@@ -1,6 +1,5 @@
 package com.example.starload.Service.impl;
 
-import com.example.starload.AppSecurityConfig;
 import com.example.starload.Domain.User;
 import com.example.starload.Mapper.UserMapper;
 import com.example.starload.Service.UserService;
